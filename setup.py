@@ -11,7 +11,7 @@ class MyClient(discord.Client):
 
     async def on_message(self, message):
         if message.content.startswith(prefix + "ping"):
-            message.reply("Pong")
+            await message.reply("Pong")
 
 client = MyClient()
 client.run(TOKEN)
