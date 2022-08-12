@@ -10,7 +10,7 @@ class MyClient(discord.Client):
         print('Logged on as {0}!'.format(self.user))
 
     async def on_message(self, message):
-        if message.startswith(prefix + "ping"):
+        if message.content.startswith(prefix + "ping"):
             message.reply("Pong")
 
 client = MyClient()
