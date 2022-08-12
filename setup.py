@@ -3,7 +3,7 @@ import discord
 
 TOKEN = os.environ.get('DISCORD_TOKEN')
 
-prefix = &
+prefix = "&"
 
 class MyClient(discord.Client):
     async def on_ready(self):
