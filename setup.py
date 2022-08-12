@@ -1,14 +1,7 @@
 import os
-from os.path import join, dirname
-from dotenv import load_dotenv
-
 import discord
 
-
-dotenv_path = join(dirname(__file__), 'id.env')
-load_dotenv(dotenv_path)
-
-TOKEN = os.getenv('DISCORD_TOKEN')
+TOKEN = os.environ.get('DISCORD_TOKEN')
 
 class MyClient(discord.Client):
     async def on_ready(self):
