@@ -12,6 +12,10 @@ class MyClient(discord.Client):
     async def on_message(self, message):
         if message.content.startswith(prefix + "ping"):
             await message.reply("Pong")
+        if message.content.startswith(prefix + "money"):
+            embed=discord.Embed(title=name, color=0x00ffff)
+            embed.add_field(name="Money" , value=money, inline=True)
+            await message.send(embed=embed)
 
 client = MyClient()
 client.run(TOKEN)
