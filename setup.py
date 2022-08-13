@@ -1,6 +1,6 @@
 import os
 import discord
-import date time as dt
+import datetime as dt
 
 TOKEN = os.environ.get('DISCORD_TOKEN')
 
