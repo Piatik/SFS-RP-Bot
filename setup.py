@@ -1,6 +1,6 @@
 import os
 import discord
-import datetime
+import date time as dt
 
 TOKEN = os.environ.get('DISCORD_TOKEN')
 
@@ -15,7 +15,8 @@ class MyClient(discord.Client):
         if message.content.startswith(prefix + "ping"):
             await message.reply("Pong")
         if message.content.startswith(prefix + "time"):
-            embed=discord.Embed(title=message.author.name, color=0x00ffff, timestamp=datetime.datetime.now())
+            embed=discord.Embed(title=message.author.name, color=0x00ffff, timestamp=dt.datetime.now())
+            embed.add_field(name="Time", value=dt.datetime.now(), inline=True)
             await message.reply(embed=embed)
 
 client = MyClient()
