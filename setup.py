@@ -1,5 +1,6 @@
 import os
 import discord
+import datetime
 
 TOKEN = os.environ.get('DISCORD_TOKEN')
 
@@ -13,9 +14,8 @@ class MyClient(discord.Client):
     async def on_message(self, message):
         if message.content.startswith(prefix + "ping"):
             await message.reply("Pong")
-        if message.content.startswith(prefix + "money"):
-            embed=discord.Embed(title=message.author.name, color=0x00ffff)
-            embed.add_field(name="Money" , value=money, inline=True)
+        if message.content.startswith(prefix + "time"):
+            embed=discord.Embed(title=message.author.name, color=0x00ffff, timestamp=datetime.datetime.now())
             await message.reply(embed=embed)
 
 client = MyClient()
