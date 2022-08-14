@@ -1,9 +1,10 @@
 from asyncio.windows_events import NULL
+import os
 import discord
 import Cogs.Missions.Planete as Planete
 from Cogs.Missions.Mission import Mission
 
-
+TOKEN = os.environ.get('DISCORD_TOKEN')
 
 bot = discord.Bot(debug_guilds=[988710399685840926])
 
@@ -22,4 +23,4 @@ def help(ctx):
     embed.add_field(name="/planete",value="Donne la table des couts pour les objectif de mission pour la planete spécifié")
     ctx.send(embed=embed)
 
-bot.run('OTg4ODEwOTQwMjEwMzgwODMw.G0svH6.o8By9XvqCP9RaK-673K-R96Zn77PXIuY0goRTI')
+bot.run(TOKEN)
