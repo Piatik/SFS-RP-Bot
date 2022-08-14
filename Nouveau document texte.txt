@@ -1,0 +1,61 @@
+buttonG1_1 = Button(label="Oui",style=discord.ButtonStyle.primary)# Oui => Retour terre ?
+buttonG1_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Retour terre ?
+viewG1 = View()
+viewG1.add_item(buttonG1_1)
+viewG1.add_item(buttonG1_2)
+buttonG2_1 = Button(label="Oui",style=discord.ButtonStyle.primary)# Oui => Vol hab ?
+buttonG2_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Vol hab ?
+viewG2 = View()
+viewG2.add_item(buttonG2_1)
+viewG2.add_item(buttonG2_2)
+buttonG3_1 = Button(label="Oui",style=discord.ButtonStyle.primary)# Oui => Combien de places sup ?
+buttonG3_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Combien de places sup ?
+viewG3 = View()
+viewG3.add_item(buttonG3_1)
+viewG3.add_item(buttonG3_2)
+#------------------------------------------------------------------------------------------------------------------------
+
+#------------------------------------------ Buttons pour les mission terrestre ------------------------------------------
+buttonT1_1 = Button(label="Oui",style=discord.ButtonStyle.primary)# Oui => Orbite Haute ?
+buttonT1_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Orbite Haute ?
+viewT1 = View()
+viewT1.add_item(buttonT1_1)
+viewT1.add_item(buttonT1_2)
+buttonT2_1 = Button(label="Oui",style=discord.ButtonStyle.primary)# Oui => Orbite Basse ?
+buttonT2_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Orbite Basse ?
+viewT2 = View()
+viewT2.add_item(buttonT2_1)
+viewT2.add_item(buttonT2_2)
+buttonT3_1 = Button(label="Oui",style=discord.ButtonStyle.primary)# Oui => Docking ?
+buttonT3_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Docking ?
+viewT3 = View()
+viewT3.add_item(buttonT3_1)
+viewT3.add_item(buttonT3_2)
+buttonT4_1 = Button(label="Oui",style=discord.ButtonStyle.primary)# Oui => Suborbital ?
+buttonT4_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Suborbital  ?
+viewT4= View()
+viewT4.add_item(buttonT4_1)
+viewT4.add_item(buttonT4_2)
+#------------------------------------------------------------------------------------------------------------------------
+
+#---------------------------------------- Buttons pour les mission extra-terrestre --------------------------------------
+buttonE1_1 = Button(label="Oui",style=discord.ButtonStyle.primary)# Oui => Rover ?
+buttonE1_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Rover ?
+viewE1 = View()
+viewE1.add_item(buttonE1_1)
+viewE1.add_item(buttonE1_2)
+buttonE2_1 = Button(label="Oui",style=discord.ButtonStyle.primary)# Oui => Sonde ?
+buttonE2_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Sonde ?
+viewE2 = View()
+viewE2.add_item(buttonE2_1)
+viewE2.add_item(buttonE2_2)
+buttonE3_1 = Button(label="Oui",style=discord.ButtonStyle.primary)# Oui => Orbite ?
+buttonE3_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Orbite ?
+viewE3 = View()
+viewE3.add_item(buttonE3_1)
+viewE3.add_item(buttonE3_2)
+buttonE4_1 = Button(label="Oui",style=discord.ButtonStyle.primary)# Oui => Satellite ?
+buttonE4_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Satellite  ?
+viewE4 = View()
+viewE4.add_item(buttonE4_1)
+viewE4.add_item(buttonE4_2)
