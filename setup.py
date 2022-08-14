@@ -18,7 +18,7 @@ class MyClient(discord.Client):
             msg = message.content.replace(prefix + "say ", "") 
             embed=discord.Embed(title=message.author.name, color=0x00ffff, timestamp=dt.datetime.now())
             embed.add_field(name="Annonce", value=msg, inline=True)
-            await self.reply(embed=embed)
+            await self.send(embed=embed)
             await message.delete()
 
 client = MyClient()
