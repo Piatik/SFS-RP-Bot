@@ -5,7 +5,7 @@ from Cogs.Missions.Mission import Mission
 
 TOKEN = os.environ.get('DISCORD_TOKEN')
 
-bot = discord.Client(debug_guilds=[988710399685840926])
+bot = discord.Client.Bot(debug_guilds=[988710399685840926])
 
 bot.load_extension('Cogs.Missions.CogMission')
 
