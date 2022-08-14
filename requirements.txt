@@ -1,2 +1,2 @@
 discord==1.7.3
-tk==8.6
+python-tk==8.5
