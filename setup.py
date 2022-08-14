@@ -16,7 +16,8 @@ class MyClient(discord.Client):
             await message.reply("Pong")
         if message.content.startswith(prefix + "time"):
             embed=discord.Embed(title=message.author.name, color=0x00ffff, timestamp=dt.datetime.now())
-            embed.add_field(name="Time", value=dt.datetime.now(), inline=True)
+            test = embed.timestamp
+            embed.add_field(name="Time", value=test, inline=True)
             await message.reply(embed=embed)
 
 client = MyClient()
