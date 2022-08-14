@@ -15,10 +15,11 @@ class MyClient(discord.Client):
         if message.content.startswith(prefix + "ping"):
             await message.reply("Pong")
         if message.content.startswith(prefix + "say"):
-            msg = message.content.replace(prefix + "say ", "") 
+            msg = message.content.replace(prefix + "say ", "")
+            channel = message.channel
             embed=discord.Embed(title=message.author.name, color=0x00ffff, timestamp=dt.datetime.now())
             embed.add_field(name="Annonce", value=msg, inline=True)
-            await self.send(embed=embed)
+            await channel.send(embed=embed)
             await message.delete()
 
 client = MyClient()
