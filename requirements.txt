@@ -1,2 +1,2 @@
 discord==1.7.3
-#python-dotenv==0.20.0
+tkinter==8.6
