@@ -14,11 +14,12 @@ class MyClient(discord.Client):
     async def on_message(self, message):
         if message.content.startswith(prefix + "ping"):
             await message.reply("Pong")
-        if message.content.startswith(prefix + "time"):
+        if message.content.startswith(prefix + "say"):
+            msg = message.content.replace(prefix + "say ", "") 
             embed=discord.Embed(title=message.author.name, color=0x00ffff, timestamp=dt.datetime.now())
-            test = embed.timestamp
-            embed.add_field(name="Time", value=test, inline=True)
+            embed.add_field(name="Annonce", value=msg, inline=True)
             await message.reply(embed=embed)
+            message.delete()
 
 client = MyClient()
 client.run(TOKEN)
