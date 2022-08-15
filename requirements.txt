@@ -1,2 +1,2 @@
-discord==2.0.0
+discord==1.7.3
 discord-ui==5.1.6
