@@ -13,6 +13,6 @@ for cog in extensions:
 
 @bot.event
 async def on_ready():
-    print('Logged on as {0}!'.format(self.user))
+    print('Logged on as {0}!'.format(bot.user))
 
 bot.run(TOKEN)
