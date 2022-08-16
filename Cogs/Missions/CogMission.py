@@ -150,12 +150,7 @@ class CogMission(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @discord.slash_command(
-        name="mission",
-        description="calculez les couts et benefices de votre mission ici!",
-    )
-    async def mission(self,ctx,planete):  
-
+    
 
 #region Code horrible a refactor si possible 
 #------------------------------------------ Buttons -------------------------------------------
@@ -379,6 +374,12 @@ class CogMission(commands.Cog):
 
 #------------------------------------------------------------------------------------------------------------------------
 #endregion 
+
+    @discord.slash_command(
+        name="mission",
+        description="calculez les couts et benefices de votre mission ici!",
+    )
+    async def mission(self,ctx,planete):  
 
         missionObj = Mission()
 
