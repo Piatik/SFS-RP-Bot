@@ -1,9 +1,9 @@
-#from turtle import title
+from turtle import title
 import discord
 from discord.ext import commands
-from discord_ui import Button , View
-#from interactions import Modal
-#from Cogs.Missions.Mission import Mission
+from discord.ui import Button , View
+from interactions import Modal
+from Cogs.Missions.Mission import Mission
 import sqlite3
 import os.path
 
@@ -125,8 +125,8 @@ def convert(val):
 
 
 class MyModal(discord.ui.Modal):
-    missionObj = None
-    embedPrincipal = None
+    missionObj = NULL
+    embedPrincipal = NULL
     def __init__(self,missionObj,embedPrincipal, *args, **kwargs) -> None:
         self.missionObj = missionObj
         self.embedPrincipal = embedPrincipal
