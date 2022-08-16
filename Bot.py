@@ -1,12 +1,11 @@
 import os
 import discord
-from discord.ext import commands
 import Cogs.Missions.Planete as Planete
 from Cogs.Missions.Mission import Mission
 
 TOKEN = os.environ.get('DISCORD_TOKEN')
 
-bot = commands.Bot("/", debug_guilds=[988710399685840926])
+bot = discord.Bot(debug_guilds=[988710399685840926])
 
 bot.load_extension('Cogs.Missions.CogMission')
 
