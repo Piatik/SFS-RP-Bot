@@ -12,7 +12,7 @@ for cog in extensions:
     bot.load_extension(cog)
 
 @bot.event
-async def on_ready(self):
+async def on_ready():
     print('Logged on as {0}!'.format(self.user))
 
 bot.run(TOKEN)
