@@ -467,7 +467,7 @@ class CogMission(commands.Cog):
         await ctx.respond(embed=getEmbed(embedPrincipal,arg))
 
     @discord.slash_command(
-        name="satellites",
+        name="satellite",
         description="Liste des satellites de la planete choisis et de leur prix",
     ) # Fonction permettant de renvoyer toutes les lunes d'une planete 
     async def satellite(self,ctx, arg):
