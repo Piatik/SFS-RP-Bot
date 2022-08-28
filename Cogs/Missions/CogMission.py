@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from turtle import title
 import discord
 from discord.ext import commands
@@ -125,8 +126,8 @@ def convert(val):
 
 
 class MyModal(discord.ui.Modal):
-    missionObj = None
-    embedPrincipal = None
+    missionObj = NULL
+    embedPrincipal = NULL
     def __init__(self,missionObj,embedPrincipal, *args, **kwargs) -> None:
         self.missionObj = missionObj
         self.embedPrincipal = embedPrincipal
@@ -145,8 +146,7 @@ class MyModal(discord.ui.Modal):
 
 
 class CogMission(commands.Cog): 
-
-    
+   
     def __init__(self, bot):
         self.bot = bot
     
@@ -156,7 +156,7 @@ class CogMission(commands.Cog):
     )
     async def mission(self,ctx,planete):  
 
-
+        author = ctx.author
 #region Code horrible a refactor si possible 
 #------------------------------------------ Buttons -------------------------------------------
 
@@ -172,210 +172,230 @@ class CogMission(commands.Cog):
 
 #-------------------------------------------- Buttons Callback Extra-Terrestre ----------------------------------------------
         async def CButtonRoverOui(interaction):
-            missionObj.Rover()
-            embed = embedPrincipal
-            embed.clear_fields()
-            buttonOui.callback = CButtonSondeOui
-            buttonOui.callback = CButtonSondeNon
-            embed.title="Y aura t'il une sonde ?"
-            await interaction.response.edit_message(embed=embed,view=view)
+            if interaction.user.id == author.id:
+                missionObj.Rover()
+                embed = embedPrincipal
+                embed.clear_fields()
+                buttonOui.callback = CButtonSondeOui
+                buttonOui.callback = CButtonSondeNon
+                embed.title="Y aura t'il une sonde ?"
+                await interaction.response.edit_message(embed=embed,view=view)
+            
 
         async def CButtonRoverNon(interaction):
-            embed = embedPrincipal
-            embed.clear_fields()
-            buttonOui.callback = CButtonSondeOui
-            buttonNon.callback = CButtonSondeNon
-            embed.title="Y aura t'il une sonde ?"
-            await interaction.response.edit_message(embed=embed,view=view)
+            if interaction.user.id == author.id:
+                embed = embedPrincipal
+                embed.clear_fields()
+                buttonOui.callback = CButtonSondeOui
+                buttonNon.callback = CButtonSondeNon
+                embed.title="Y aura t'il une sonde ?"
+                await interaction.response.edit_message(embed=embed,view=view)
 
 
         async def CButtonSondeOui(interaction):
-            missionObj.Sonde()
-            embed = embedPrincipal
-            embed.clear_fields()
-            buttonOui.callback = CButtonOrbiteOui
-            buttonNon.callback = CButtonOrbiteNon
-            embed.title="Le vol sera t'il en orbite ?"
-            await interaction.response.edit_message(embed=embed,view=view)
+            if interaction.user.id == author.id:
+                missionObj.Sonde()
+                embed = embedPrincipal
+                embed.clear_fields()
+                buttonOui.callback = CButtonOrbiteOui
+                buttonNon.callback = CButtonOrbiteNon
+                embed.title="Le vol sera t'il en orbite ?"
+                await interaction.response.edit_message(embed=embed,view=view)
 
         async def CButtonSondeNon(interaction):
-            embed = embedPrincipal
-            embed.clear_fields()
-            buttonOui.callback = CButtonOrbiteOui
-            buttonNon.callback = CButtonOrbiteNon
-            embed.title="Le vol sera t'il en orbite ?"
-            await interaction.response.edit_message(embed=embed,view=view)
+            if interaction.user.id == author.id:
+                embed = embedPrincipal
+                embed.clear_fields()
+                buttonOui.callback = CButtonOrbiteOui
+                buttonNon.callback = CButtonOrbiteNon
+                embed.title="Le vol sera t'il en orbite ?"
+                await interaction.response.edit_message(embed=embed,view=view)
 
 
         async def CButtonOrbiteOui(interaction):
-            missionObj.Orbite()
-            embed = embedPrincipal
-            embed.clear_fields()
-            buttonOui.callback = CButtonRetourOui
-            buttonNon.callback = CButtonRetourNon
-            embed.title="Un retour sur terre est-il prévu ?"
-            await interaction.response.edit_message(embed=embed,view=view)
+            if interaction.user.id == author.id:
+                missionObj.Orbite()
+                embed = embedPrincipal
+                embed.clear_fields()
+                buttonOui.callback = CButtonRetourOui
+                buttonNon.callback = CButtonRetourNon
+                embed.title="Un retour sur terre est-il prévu ?"
+                await interaction.response.edit_message(embed=embed,view=view)
 
         async def CButtonOrbiteNon(interaction):
-            embed = embedPrincipal
-            buttonOui.callback = CButtonRetourOui
-            buttonNon.callback = CButtonRetourNon
-            embed.title="Un retour sur terre est-il prévu ?"
-            embed.clear_fields()
-            await interaction.response.edit_message(embed=embed,view=view)
+            if interaction.user.id == author.id:
+                embed = embedPrincipal
+                buttonOui.callback = CButtonRetourOui
+                buttonNon.callback = CButtonRetourNon
+                embed.title="Un retour sur terre est-il prévu ?"
+                embed.clear_fields()
+                await interaction.response.edit_message(embed=embed,view=view)
 
 
 #-------------------------------------------- Buttons Callback Generaux ----------------------------------------------
 
         async def CButtonRetourOui(interaction):
-            missionObj.RetourTerre()
-            embed = embedPrincipal
-            embed.clear_fields()
-            if missionObj.planete == "Autre":
-                embed.title="Récapitulatif de votre mission :"
-                embed.add_field(name="Couts ", value=str(missionObj.GetPrix()))
-                embed.add_field(name="Bénefices",value= str(missionObj.GetRecette()))
-                await interaction.response.edit_message(embed=embed,view=None)
-            else :
-                buttonOui.callback = CButtonVolHabOui
-                buttonNon.callback = CButtonVolHabNon
-                embed.title="La mission sera t'elle habité ?"
-                await interaction.response.edit_message(embed=embed,view=view)
+            if interaction.user.id == author.id:
+                missionObj.RetourTerre()
+                embed = embedPrincipal
+                embed.clear_fields()
+                if missionObj.planete == "Autre":
+                    embed.title="Récapitulatif de votre mission :"
+                    embed.add_field(name="Couts ", value=str(missionObj.GetPrix()))
+                    embed.add_field(name="Bénefices",value= str(missionObj.GetRecette()))
+                    await interaction.response.edit_message(embed=embed,view=None)
+                else :
+                    buttonOui.callback = CButtonVolHabOui
+                    buttonNon.callback = CButtonVolHabNon
+                    embed.title="La mission sera t'elle habité ?"
+                    await interaction.response.edit_message(embed=embed,view=view)
 
         async def CButtonRetourNon(interaction):
-            embed = embedPrincipal
-            embed.clear_fields()
-            if missionObj.planete == "Autre":
-                embed.title="Récapitulatif de votre mission :"
-                embed.add_field(name="Couts ", value=str(missionObj.GetPrix()))
-                embed.add_field(name="Bénefices",value= str(missionObj.GetRecette()))
-                await interaction.response.edit_message(embed=embed,view=None)    
-            else :
-                buttonOui.callback = CButtonVolHabOui
-                buttonNon.callback = CButtonVolHabNon
-                embed.title="La mission sera t'elle habité ?"
-                await interaction.response.edit_message(embed=embed,view=view)
+            if interaction.user.id == author.id:
+                embed = embedPrincipal
+                embed.clear_fields()
+                if missionObj.planete == "Autre":
+                    embed.title="Récapitulatif de votre mission :"
+                    embed.add_field(name="Couts ", value=str(missionObj.GetPrix()))
+                    embed.add_field(name="Bénefices",value= str(missionObj.GetRecette()))
+                    await interaction.response.edit_message(embed=embed,view=None)    
+                else :
+                    buttonOui.callback = CButtonVolHabOui
+                    buttonNon.callback = CButtonVolHabNon
+                    embed.title="La mission sera t'elle habité ?"
+                    await interaction.response.edit_message(embed=embed,view=view)
 
 
         async def CButtonVolHabOui(interaction):
-            missionObj.VolHabitee()
-            buttonOui.callback = CButtonPlaceSupOui
-            buttonNon.callback = CButtonPlaceSupNon
-            embed = embedPrincipal
-            embed.clear_fields()
-            embed.title="Vous faut-il une place supplémentaire ?"
-            await interaction.response.edit_message(embed = embed, view=view)
+            if interaction.user.id == author.id:
+                missionObj.VolHabitee()
+                buttonOui.callback = CButtonPlaceSupOui
+                buttonNon.callback = CButtonPlaceSupNon
+                embed = embedPrincipal
+                embed.clear_fields()
+                embed.title="Vous faut-il une place supplémentaire ?"
+                await interaction.response.edit_message(embed = embed, view=view)
 
         async def CButtonVolHabNon(interaction):
-            embed = embedPrincipal
-            embed.title="Récapitulatif de votre mission :"
-            embed.clear_fields()
-            embed.add_field(name="Couts ", value="{}\n({})".format(convert(missionObj.GetPrix()), str(missionObj.GetPrix()) ))
-            embed.add_field(name="Bénefices",value="{}\n({})".format(convert(missionObj.GetRecette()), str(missionObj.GetRecette())))
-            await interaction.response.edit_message(embed=embed,view=None)
-       
+            if interaction.user.id == author.id:
+                embed = embedPrincipal
+                embed.title="Récapitulatif de votre mission :"
+                embed.clear_fields()
+                embed.add_field(name="Couts ", value="{}\n({})".format(convert(missionObj.GetPrix()), str(missionObj.GetPrix()) ))
+                embed.add_field(name="Bénefices",value="{}\n({})".format(convert(missionObj.GetRecette()), str(missionObj.GetRecette())))
+                await interaction.response.edit_message(embed=embed,view=None)
+        
 
         async def CButtonPlaceSupOui(interaction):
-            await interaction.response.send_modal(MyModal(title="Places supplémentaire",missionObj=missionObj,embedPrincipal = embedPrincipal))
+            if interaction.user.id == author.id:
+                await interaction.response.send_modal(MyModal(title="Places supplémentaire",missionObj=missionObj,embedPrincipal = embedPrincipal))
 
 
         async def CButtonPlaceSupNon(interaction):
-            embed = embedPrincipal
-            embed.title="Récapitulatif de votre mission :"
-            embed.clear_fields()
-            embed.add_field(name="Couts ", value="{}\n({})".format(convert(missionObj.GetPrix()), str(missionObj.GetPrix()) ))
-            embed.add_field(name="Bénefices",value="{}\n({})".format(convert(missionObj.GetRecette()), str(missionObj.GetRecette())))
-            await interaction.response.edit_message(embed=embed,view=None)
-
+            if interaction.user.id == author.id:
+                embed = embedPrincipal
+                embed.title="Récapitulatif de votre mission :"
+                embed.clear_fields()
+                embed.add_field(name="Couts ", value="{}\n({})".format(convert(missionObj.GetPrix()), str(missionObj.GetPrix()) ))
+                embed.add_field(name="Bénefices",value="{}\n({})".format(convert(missionObj.GetRecette()), str(missionObj.GetRecette())))
+                await interaction.response.edit_message(embed=embed,view=None)
 
 #-------------------------------------------- Buttons Callback Terrestre ----------------------------------------------
         async def CButtonOrbHOui(interaction):
-            missionObj.OrbiteHaute()
-            buttonOui.callback = CButtonOrbBOui
-            buttonNon.callback = CButtonOrbBNon
+            if interaction.user.id == author.id:
+                missionObj.OrbiteHaute()
+                buttonOui.callback = CButtonOrbBOui
+                buttonNon.callback = CButtonOrbBNon
 
-            embed = embedPrincipal
-            embed.clear_fields()
-            embed.title="La mission est prévu pour un Docking ?"
-            await interaction.response.edit_message(embed=embed,view=view)
+                embed = embedPrincipal
+                embed.clear_fields()
+                embed.title="La mission est prévu pour un Docking ?"
+                await interaction.response.edit_message(embed=embed,view=view)
 
         async def CButtonOrbHNon(interaction):
-            buttonOui.callback = CButtonOrbBOui
-            buttonNon.callback = CButtonOrbBNon
-            embed = embedPrincipal
-            embed.clear_fields()
-            embed.title= "Le vol est il prévu pour etre en Orbite basse "
-            await interaction.response.edit_message(embed=embed,view=view)
-   
+            if interaction.user.id == author.id:
+                buttonOui.callback = CButtonOrbBOui
+                buttonNon.callback = CButtonOrbBNon
+                embed = embedPrincipal
+                embed.clear_fields()
+                embed.title= "Le vol est il prévu pour etre en Orbite basse "
+                await interaction.response.edit_message(embed=embed,view=view)
+    
 
 
         async def CButtonOrbBOui(interaction):
-            missionObj.OrbiteBasse()
-            buttonOui.callback = CButtonDockOui
-            buttonNon.callback = CButtonDockNon
-            embed = embedPrincipal
-            embed.clear_fields()
-            embed.title= "La mission est prévu pour un Docking ?"
-            await interaction.response.edit_message(embed=embed,view=view)
+            if interaction.user.id == author.id:
+                missionObj.OrbiteBasse()
+                buttonOui.callback = CButtonDockOui
+                buttonNon.callback = CButtonDockNon
+                embed = embedPrincipal
+                embed.clear_fields()
+                embed.title= "La mission est prévu pour un Docking ?"
+                await interaction.response.edit_message(embed=embed,view=view)
 
         async def CButtonOrbBNon(interaction):
-            buttonOui.callback = CButtonDockOui
-            buttonNon.callback = CButtonDockNon
-            embed = embedPrincipal
-            embed.clear_fields()
-            embed.title="La mission est prévu pour un Docking ?"
-            await interaction.response.edit_message(embed=embed,view=view)
+            if interaction.user.id == author.id:
+                buttonOui.callback = CButtonDockOui
+                buttonNon.callback = CButtonDockNon
+                embed = embedPrincipal
+                embed.clear_fields()
+                embed.title="La mission est prévu pour un Docking ?"
+                await interaction.response.edit_message(embed=embed,view=view)
 
         async def CButtonDockOui(interaction):
-            missionObj.Docking()
-            embed = embedPrincipal
-            if missionObj.altChoisie:
-                buttonOui.callback = CButtonRetourOui
-                buttonNon.callback = CButtonRetourNon
-                embed.clear_fields()
-                embed.title= "La mission est prévu pour un retour sur terre ?"
-                await interaction.response.edit_message(embed=embed,view=view)
-            else:
-                buttonOui.callback = CButtonSubOui
-                buttonNon.callback = CButtonSubNon
-                embed.clear_fields()
-                embed.title= "La mission est prévu pour un vol suborbital ?"
-                await interaction.response.edit_message(embed=embed,view=view)
+            if interaction.user.id == author.id:
+                missionObj.Docking()
+                embed = embedPrincipal
+                if missionObj.altChoisie:
+                    buttonOui.callback = CButtonRetourOui
+                    buttonNon.callback = CButtonRetourNon
+                    embed.clear_fields()
+                    embed.title= "La mission est prévu pour un retour sur terre ?"
+                    await interaction.response.edit_message(embed=embed,view=view)
+                else:
+                    buttonOui.callback = CButtonSubOui
+                    buttonNon.callback = CButtonSubNon
+                    embed.clear_fields()
+                    embed.title= "La mission est prévu pour un vol suborbital ?"
+                    await interaction.response.edit_message(embed=embed,view=view)
 
 
         async def CButtonDockNon(interaction):
-            embed = embedPrincipal
-            if missionObj.altChoisie:
+            if interaction.user.id == author.id:
+                embed = embedPrincipal
+                if missionObj.altChoisie:
+                    buttonOui.callback = CButtonRetourOui
+                    buttonNon.callback = CButtonRetourNon
+                    embed.clear_fields()
+                    embed.title="La mission est prévu pour un retour sur terre ?"
+                    await interaction.response.edit_message(embed=embed,view=view)
+                else:
+                    buttonOui.callback = CButtonSubOui
+                    buttonNon.callback = CButtonSubNon
+                    embed.clear_fields()
+                    embed.title="La mission est prévu pour un vol suborbital ?"
+                    await interaction.response.edit_message(embed=embed,view=view)
+            
+
+        async def CButtonSubOui(interaction):
+            if interaction.user.id == author.id:
+                missionObj.Suborbital()
+                view=View()
                 buttonOui.callback = CButtonRetourOui
                 buttonNon.callback = CButtonRetourNon
+                embed = embedPrincipal
                 embed.clear_fields()
                 embed.title="La mission est prévu pour un retour sur terre ?"
                 await interaction.response.edit_message(embed=embed,view=view)
-            else:
-                buttonOui.callback = CButtonSubOui
-                buttonNon.callback = CButtonSubNon
-                embed.clear_fields()
-                embed.title="La mission est prévu pour un vol suborbital ?"
-                await interaction.response.edit_message(embed=embed,view=view)
-        
-
-        async def CButtonSubOui(interaction):
-            missionObj.Suborbital()
-            view=View()
-            buttonOui.callback = CButtonRetourOui
-            buttonNon.callback = CButtonRetourNon
-            embed = embedPrincipal
-            embed.clear_fields()
-            embed.title="La mission est prévu pour un retour sur terre ?"
-            await interaction.response.edit_message(embed=embed,view=view)
     
         async def CButtonSubNon(interaction):
-            buttonOui.callback = CButtonRetourOui
-            buttonNon.callback = CButtonRetourNon
-            embed = embedPrincipal
-            embed.clear_fields()
-            embed.title="La mission est prévu pour un retour sur terre ?"
-            await interaction.response.edit_message(embed=embed,view=view)
+            if interaction.user.id == author.id:
+                buttonOui.callback = CButtonRetourOui
+                buttonNon.callback = CButtonRetourNon
+                embed = embedPrincipal
+                embed.clear_fields()
+                embed.title="La mission est prévu pour un retour sur terre ?"
+                await interaction.response.edit_message(embed=embed,view=view)
 
 #------------------------------------------------------------------------------------------------------------------------
 #endregion 
@@ -389,8 +409,12 @@ class CogMission(commands.Cog):
     
     
         if planete in missionObj.nomPlanete :
-        
-            embedPrincipal.set_author(name="Mission vers {} par @{}".format(planete,ctx.author.name))
+            if planete == "Lune":
+                embedPrincipal.set_author(name="Mission vers la Lune, satellite de la Terre par @{}".format(ctx.author.name))
+            elif planete == "Autre":
+                embedPrincipal.set_author(name="Mission vers une planete lointaine par @{}".format(ctx.author.name))
+            else :
+                embedPrincipal.set_author(name="Mission vers {} par @{}".format(planete,ctx.author.name))
             embed = embedPrincipal
             embed.clear_fields()
             missionObj.SetPlanete(planete)
@@ -399,12 +423,12 @@ class CogMission(commands.Cog):
                 buttonOui.callback = CButtonRoverOui
                 buttonNon.callback = CButtonRoverNon
                 embed.title = "Y aura t'il un rover ?"
-                await ctx.send(embed=embed, view=view)
+                await ctx.respond(embed=embed, view=view)
             else :
                 buttonOui.callback = CButtonOrbHOui
                 buttonNon.callback = CButtonOrbHNon
                 embed.title="Le vol est-il prevu pour une vol en orbite Haute ?"
-                await ctx.send(embed=embed, view=view)
+                await ctx.respond(embed=embed, view=view)
 
         elif planete in missionObj.nomSat:
             missionObj.SetPlaneteBySat(planete)
@@ -416,15 +440,15 @@ class CogMission(commands.Cog):
                 buttonOui.callback = CButtonRoverOui
                 buttonNon.callback = CButtonRoverNon
                 embed.title = "Y aura t'il un rover ?"
-                await ctx.send(embed=embed, view=view)
+                await ctx.respond(embed=embed, view=view)
             else :
                 buttonOui.callback = CButtonOrbHOui
                 buttonNon.callback = CButtonOrbHNon
                 embed.title="Le vol est-il prevu pour une vol en orbite Haute ?"
-                await ctx.send(embed=embed, view=view)
+                await ctx.respond(embed=embed, view=view)
 
         else :
-            await ctx.send(embed = discord.Embed(title = "Veuiller verifier l'orthogrape du nom de votre planete ou satellite",color = discord.Color.red))
+            await ctx.respond(embed = discord.Embed(title = "Veuiller verifier l'orthogrape du nom de votre planete ou satellite",color = discord.Color.red))
 
 
 
@@ -433,29 +457,28 @@ class CogMission(commands.Cog):
         description="Affichage de la table des prix de la planete choisie",
     ) # fonction prenant en parametre le nom d'une planete et retourne toutes les info monetaire la concernant 
     async def prix(self,ctx, arg):
-        planete = ["Terre","Lune","Mars","Venus","Mercure","Jupiter","Saturne","Neptune","Uranus","Pluton","Autre"]
+        missionObj = Mission()
         embedPrincipal = discord.Embed(color=0x00ff00)
         embedPrincipal.set_thumbnail(url="https://www.crushpixel.com/big-static14/preview4/planet-space-with-stars-shiny-1674010.jpg")
 
         arg = formatNomPlanete(arg)
     
-        assert arg in planete, await ctx.send(embed = discord.Embed(title = "Veuiller verifier l'orthogrape du nom de votre planete"))  # verif que la planete existe
+        assert arg in missionObj.nomPlanete, await ctx.send(embed = discord.Embed(title = "Veuiller verifier l'orthogrape du nom de votre planete"))  # verif que la planete existe
 
-        await ctx.send(embed=getEmbed(embedPrincipal,arg))
+        await ctx.respond(embed=getEmbed(embedPrincipal,arg))
 
     @discord.slash_command(
         name="satellites",
         description="Liste des satellites de la planete choisis et de leur prix",
     ) # Fonction permettant de renvoyer toutes les lunes d'une planete 
     async def satellite(self,ctx, arg):
-        planete = ["Terre","Lune","Mars","Venus","Mercure","Jupiter","Saturne","Neptune","Uranus","Pluton","Autre"]
-        nomPlaneteSatellite = ["Mars","Jupiter","Saturne","Neptune","Uranus"]
+        missionObj = Mission()
         embeded = discord.Embed(color=0x00ff00)
         embeded.set_thumbnail(url="https://www.crushpixel.com/big-static14/preview4/planet-space-with-stars-shiny-1674010.jpg")
 
         arg = formatNomPlanete(arg)
-        assert arg in planete, await ctx.send(embed = discord.Embed(title = "Veuiller verifier l'orthogrape du nom de votre planete !")) # verif que la planete existe
-        assert arg in nomPlaneteSatellite, await ctx.send(embed = discord.Embed(title = "Il n'y a pas de satellite pour cette Planete !")) # verif que la planete as un satellite
+        assert arg in missionObj.nomPlanete, await ctx.send(embed = discord.Embed(title = "Veuiller verifier l'orthogrape du nom de votre planete !")) # verif que la planete existe
+        assert arg in missionObj.nomPlaneteSat, await ctx.send(embed = discord.Embed(title = "Il n'y a pas de satellite pour cette Planete !")) # verif que la planete as un satellite
     
         cur = GetPrixSatellite(arg)
     
@@ -465,7 +488,7 @@ class CogMission(commands.Cog):
        
             embeded.add_field(name="{}".format(row[0]), value="{}".format(convert(row[1])), inline=False)
 
-        await ctx.send(embed = embeded)
+        await ctx.respond(embed = embeded)
 
 
 def setup(bot): # this is called by Pycord to setup the cog

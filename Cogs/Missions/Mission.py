@@ -1,3 +1,5 @@
+
+from asyncio.windows_events import NULL
 from asyncore import read
 import datetime
 from multiprocessing.sharedctypes import Value
@@ -42,6 +44,18 @@ def GetNomSat():
     
     return arr
 
+def GetNomPlaneteSat(): 
+    cur.execute("""
+    select planete.nom_planete  
+    from satelite, planete
+    where satelite.planete_id = planete.id;
+    """)
+    arr = []
+    for rows in cur:
+        for row in rows:
+            arr.append(row)
+    
+    return arr
 
 def GetNomPlaneteBySat(sat): 
     cur.execute("""
@@ -74,10 +88,11 @@ def convert(val):
 
 class Mission():
     nomPlanete = GetNomPlanete()
+    nomPlaneteSat = GetNomPlaneteSat()
     nomSat = GetNomSat()
     planete = ""
     cible = ""
-    objectifPlanete = None
+    objectifPlanete = NULL
     objectifMultiple = False # Les objectif eligibles au calcul : survol / docking / orbite / Sonde / Rover ( la vrai technique serait de commencer par le plus cher de tous, et de diviser par 2 les couts d'options ds autres)
     altChoisie = False
     Retour = False
@@ -177,7 +192,7 @@ class Mission():
         self.objectifPlanete.add(self.objectifPlanete.GetRover())
 
     def Satellite(self): 
-        return None
+        return NULL
         #if self.objectifPlanete.asSatellite:
         #self.objectifPlanete.add(data.get(id[x-1]))
 
