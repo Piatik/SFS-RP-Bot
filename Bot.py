@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 import discord
 import Cogs.Missions.Planete as Planete
 from Cogs.Missions.Mission import Mission
