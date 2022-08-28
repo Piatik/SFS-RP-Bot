@@ -1,5 +1,3 @@
-
-from asyncio.windows_events import NULL
 from asyncore import read
 import datetime
 from multiprocessing.sharedctypes import Value
@@ -92,7 +90,7 @@ class Mission():
     nomSat = GetNomSat()
     planete = ""
     cible = ""
-    objectifPlanete = NULL
+    objectifPlanete = None
     objectifMultiple = False # Les objectif eligibles au calcul : survol / docking / orbite / Sonde / Rover ( la vrai technique serait de commencer par le plus cher de tous, et de diviser par 2 les couts d'options ds autres)
     altChoisie = False
     Retour = False
@@ -192,7 +190,7 @@ class Mission():
         self.objectifPlanete.add(self.objectifPlanete.GetRover())
 
     def Satellite(self): 
-        return NULL
+        return None
         #if self.objectifPlanete.asSatellite:
         #self.objectifPlanete.add(data.get(id[x-1]))
 
