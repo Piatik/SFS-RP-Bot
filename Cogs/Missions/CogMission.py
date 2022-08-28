@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from turtle import title
 import discord
 from discord.ext import commands
@@ -126,8 +125,8 @@ def convert(val):
 
 
 class MyModal(discord.ui.Modal):
-    missionObj = NULL
-    embedPrincipal = NULL
+    missionObj = None
+    embedPrincipal = None
     def __init__(self,missionObj,embedPrincipal, *args, **kwargs) -> None:
         self.missionObj = missionObj
         self.embedPrincipal = embedPrincipal
