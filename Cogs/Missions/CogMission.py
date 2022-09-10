@@ -6,6 +6,7 @@ from interactions import Modal
 import sqlite3
 import os.path
 
+print("Le module est arrive à l'etape 1")
 
 try:
     
