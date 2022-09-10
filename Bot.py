@@ -11,7 +11,8 @@ bot = discord.Bot(debug_guilds=[988710399685840926])
 async def on_ready():
     print('Logged on as {0}!'.format(bot.user))
 
-    
+print("Start CogMission Loading")
 bot.load_extension('Cogs.Missions.CogMission')
+print("End CogMission Loading")
 bot.load_extension('Cogs.CogHelp')
 bot.run(TOKEN)
