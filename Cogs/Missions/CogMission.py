@@ -491,4 +491,6 @@ class CogMission(commands.Cog):
 
 
 def setup(bot): # this is called by Pycord to setup the cog
+    print("1")
     bot.add_cog(CogMission(bot))
+    print("2")
