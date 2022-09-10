@@ -5,7 +5,6 @@ from discord.ui import Modal
 import sqlite3
 import os.path
 from Cogs.Other.Mission import Mission
-import Cogs.Missions.Planete as Planete
 
 try:
     
