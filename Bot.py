@@ -1,7 +1,7 @@
 import os
 import discord
-import Cogs.Missions.Planete as Planete
-from Cogs.Missions.Mission import Mission
+import Cogs.Other.Planete as Planete
+from Cogs.Other.Mission import Mission
 
 TOKEN = os.environ.get('DISCORD_TOKEN')
 
@@ -12,7 +12,7 @@ async def on_ready():
     print('Logged on as {0}!'.format(bot.user))
 
 print("Start CogMission Loading")
-bot.load_extension('Cogs.Missions.CogMission')
+bot.load_extension('Cogs.Other.CogMission')
 print("End CogMission Loading")
 bot.load_extension('Cogs.CogHelp')
 bot.run(TOKEN)
