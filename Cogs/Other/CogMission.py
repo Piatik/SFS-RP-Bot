@@ -1,7 +1,4 @@
 print("Module Import Start")
-
-from turtle import title
-print("Module Import 1")
 import discord
 print("Module Import 2")
 from discord.ext import commands
