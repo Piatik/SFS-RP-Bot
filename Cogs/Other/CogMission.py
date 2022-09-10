@@ -1,11 +1,17 @@
 print("Module Import Start")
 
 from turtle import title
+print("Module Import 1")
 import discord
+print("Module Import 2")
 from discord.ext import commands
+print("Module Import 3")
 from discord.ui import Button , View
+print("Module Import 4")
 from interactions import Modal
+print("Module Import 5")
 import sqlite3
+print("Module Import 6")
 import os.path
 
 print("Module Import Success")
