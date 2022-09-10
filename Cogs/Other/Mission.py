@@ -3,7 +3,7 @@ import datetime
 from multiprocessing.sharedctypes import Value
 import sqlite3
 import os.path
-import Cogs.Missions.Planete as Planete
+import Cogs.Other.Planete as Planete
 #region def
 
 try:
