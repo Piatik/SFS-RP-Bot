@@ -1,3 +1,5 @@
+print("Module Import Start")
+
 from turtle import title
 import discord
 from discord.ext import commands
@@ -6,7 +8,7 @@ from interactions import Modal
 import sqlite3
 import os.path
 
-print("Le module est arrive à l'etape 1")
+print("Module Import Success")
 
 try:
     
