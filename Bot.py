@@ -13,7 +13,7 @@ for cog in extensions:
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Game(name="spam Voyager 3 de /help"))
+    await bot.change_presence(activity=discord.Game(name="Spam Voyager 3 de /help"))
     print('Logged on as {0}!'.format(bot.user))
 
 bot.run(TOKEN)
