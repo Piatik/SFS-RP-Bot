@@ -421,7 +421,7 @@ class CogMission(commands.Cog):
                 embedPrincipal.set_thumbnail(url="https://www.crushpixel.com/big-static14/preview4/planet-space-with-stars-shiny-1674010.jpg")
             else :
                 embedPrincipal.set_author(name="Mission vers {} par @{}".format(planete,ctx.author.name))
-                embedPrincipal.set_thumbnail(liens[str(planete)])
+                embedPrincipal.set_thumbnail(url=liens[str(planete)])
             embed = embedPrincipal
             embed.clear_fields()
             missionObj.SetPlanete(planete)
