@@ -400,7 +400,6 @@ class CogMission(commands.Cog):
         missionObj = Mission()
 
         embedPrincipal = discord.Embed(color=0x00ff00)
-        embedPrincipal.set_thumbnail(url="https://www.crushpixel.com/big-static14/preview4/planet-space-with-stars-shiny-1674010.jpg")
 
         planete = formatNomPlanete(planete)
     
@@ -408,10 +407,13 @@ class CogMission(commands.Cog):
         if planete in missionObj.nomPlanete :
             if planete == "Lune":
                 embedPrincipal.set_author(name="Mission vers la Lune, satellite de la Terre par @{}".format(ctx.author.name))
+                embedPrincipal.set_thumbnail(url="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Moon_nearside_LRO_5000_%282%29.png/330px-Moon_nearside_LRO_5000_%282%29.png")
             elif planete == "Autre":
                 embedPrincipal.set_author(name="Mission vers une planete lointaine par @{}".format(ctx.author.name))
+                embedPrincipal.set_thumbnail(url="https://www.crushpixel.com/big-static14/preview4/planet-space-with-stars-shiny-1674010.jpg")
             else :
                 embedPrincipal.set_author(name="Mission vers {} par @{}".format(planete,ctx.author.name))
+                embedPrincipal.set_thumbnail(url="https://www.crushpixel.com/big-static14/preview4/planet-space-with-stars-shiny-1674010.jpg")
             embed = embedPrincipal
             embed.clear_fields()
             missionObj.SetPlanete(planete)
