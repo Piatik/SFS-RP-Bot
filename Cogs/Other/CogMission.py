@@ -456,7 +456,7 @@ class CogMission(commands.Cog):
                 await ctx.respond(embed=embed, view=view)
 
         else :
-            await ctx.respond(embed = discord.Embed(title = "Veuiller verifier l'orthogrape du nom de votre planete ou satellite",color = discord.Color.red))
+            await ctx.respond(embed = discord.Embed(title = "Veuiller verifier l'orthogrape du nom de votre planete ou satellite"))
 
 
 
