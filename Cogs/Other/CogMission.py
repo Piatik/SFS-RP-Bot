@@ -67,6 +67,7 @@ def getEmbed(embed,planete): # Methode de traitement de l'affichage
     if planete == "Terre":
 
         embed.title="Table des prix pour **__la Terre__**"
+        embed.set_thumbnail(url="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Earth_by_the_EPIC_Team_on_21_April_2018.png/280px-Earth_by_the_EPIC_Team_on_21_April_2018.png")
         embed.description="Les prix doivent **s'additionner** selon les besoins de la **mission**"
         for row in data:
             embed.add_field(name="Prix de la __mission__",value= "{}\n".format(convert(row[0])),inline=False )
