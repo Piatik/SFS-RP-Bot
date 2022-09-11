@@ -6,14 +6,21 @@ import sqlite3
 import os.path
 from Cogs.Other.Mission import Mission
 
-try:
-    
+liens = {"Venus": "https://www.leparisien.fr/resizer/rRELqXgBzXd16IixeRGXY9XJj7g=/932x582/cloudfront-eu-central-1.images.arcpublishing.com/leparisien/SJJ6CF6KOROYYJSCD3MKCADRQE.jpg",
+         "Mars": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRfl9LvcQc9VfbX47b8R6JYMmmk_hTyoaMfw&usqp=CAU",
+         "Mercure": "https://cdn.futura-sciences.com/buildsv6/images/largeoriginal/e/d/f/edf75f57d9_82666_mercureok.jpg",
+         "Jupiter": "https://static.actu.fr/uploads/2019/06/AdobeStock_234150167-960x640.jpeg",
+         "Saturne": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/1200px-Saturn_during_Equinox.jpg",
+         "Uranus": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/640px-Uranus2.jpg",
+         "Neptune": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Neptune.jpg/280px-Neptune.jpg",
+         "Pluton": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Nh-pluto-in-true-color_2x.jpg/290px-Nh-pluto-in-true-color_2x.jpg"
+}
 
+try:
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     db_path = os.path.join(BASE_DIR, "sqlite.db")
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
-
 
 except sqlite3.Error as error:
     print("Failed to read data from sqlite table", error)
@@ -414,7 +421,7 @@ class CogMission(commands.Cog):
                 embedPrincipal.set_thumbnail(url="https://www.crushpixel.com/big-static14/preview4/planet-space-with-stars-shiny-1674010.jpg")
             else :
                 embedPrincipal.set_author(name="Mission vers {} par @{}".format(planete,ctx.author.name))
-                embedPrincipal.set_thumbnail(url="https://www.crushpixel.com/big-static14/preview4/planet-space-with-stars-shiny-1674010.jpg")
+                embedPrincipal.set_thumbnail(liens[planete])
             embed = embedPrincipal
             embed.clear_fields()
             missionObj.SetPlanete(planete)
