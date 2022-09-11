@@ -6,7 +6,8 @@ import sqlite3
 import os.path
 from Cogs.Other.Mission import Mission
 
-liens = {"Venus": "https://www.astro-rennes.com/planetes/images/venus/detail_venus.jpg",
+liens = {"Terre": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Earth_by_the_EPIC_Team_on_21_April_2018.png/280px-Earth_by_the_EPIC_Team_on_21_April_2018.png",
+         "Venus": "https://www.astro-rennes.com/planetes/images/venus/detail_venus.jpg",
          "Mars": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRfl9LvcQc9VfbX47b8R6JYMmmk_hTyoaMfw&usqp=CAU",
          "Mercure": "https://cdn.futura-sciences.com/buildsv6/images/largeoriginal/e/d/f/edf75f57d9_82666_mercureok.jpg",
          "Jupiter": "https://static.actu.fr/uploads/2019/06/AdobeStock_234150167-960x640.jpeg",
