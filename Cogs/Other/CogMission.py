@@ -28,7 +28,7 @@ except sqlite3.Error as error:
 
 def GetPrixPlanete(planete): # recuperation des datas des planetes
 
-    if planete == "Terre":
+    if planete.capitalize() == "Terre":
         cur.execute("""
         select prix, suborbital_prix,orbite_basse_prix,orbite_haute_prix,retour_terre_prix,docking_prix,mission_habite_prix,place_sup_prix 
         from planete 
@@ -37,7 +37,7 @@ def GetPrixPlanete(planete): # recuperation des datas des planetes
         
         return cur
 
-    elif planete == "Pluton" or planete == "Autre":
+    elif planete.capitalize() == "Pluton" or planete.capitalize() == "Autre":
         cur.execute("""
         select prix, orbite_prix,sonde_prix,rover_prix,retour_terre_prix,survol_prix 
         from planete
@@ -112,12 +112,11 @@ def getEmbed(embed,planete): # Methode de traitement de l'affichage
             embed.add_field(name="Prix du __retour sur terre__",value= "{}\n".format(convert(row[4])),inline=False )
             embed.add_field(name="Prix du __vol habitee__",value= "{}\n".format(convert(row[5])),inline=False )
             embed.add_field(name="Prix d'une __place supplementaire__",value= "{}\n".format(convert(row[6])),inline=False )
-            embed.add_field(name="Prix du __survol__",value= "{}\n".format(convert(row[7])),inline=False )
-
-        
+            embed.add_field(name="Prix du __survol__",value= "{}\n".format(convert(row[7])),inline=False )   
     return embed
+
 def formatNomPlanete(planete):
-    planete = str(planete).title()
+    planete = str(planete).capitalize()
     planete = planete.replace('é','e')
     planete = planete.replace('è','e')
     return planete
