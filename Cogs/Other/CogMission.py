@@ -117,7 +117,7 @@ def getEmbed(embed,planete): # Methode de traitement de l'affichage
         
     return embed
 def formatNomPlanete(planete):
-    planete = str(planete).title()
+    planete = str(planete).capitalize()
     planete = planete.replace('é','e')
     planete = planete.replace('è','e')
     return planete
