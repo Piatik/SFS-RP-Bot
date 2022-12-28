@@ -59,3 +59,4 @@ buttonE4_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Satell
 viewE4 = View()
 viewE4.add_item(buttonE4_1)
 viewE4.add_item(buttonE4_2)
+test
