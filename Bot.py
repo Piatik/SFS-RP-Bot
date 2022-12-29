@@ -5,7 +5,7 @@ from Cogs.Other.Mission import Mission
 
 TOKEN = os.environ.get('DISCORD_TOKEN')
 
-bot = discord.Bot(debug_guilds=[988710399685840926, 827924843944738817])
+bot = discord.Bot(debug_guilds=[1007604816530374727])
 
 extensions = ['Cogs.Other.CogMission','Cogs.CogHelp']
 for cog in extensions:
