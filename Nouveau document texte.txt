@@ -1,4 +1,4 @@
-buttonG1_1 = Button(label="Oui",style=discord.ButtonStyle.primary)# Oui => Retour terre ?
+NbuttonG1_1 = Button(label="Oui",style=discord.ButtonStyle.primary)# Oui => Retour terre ?
 buttonG1_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Retour terre ?
 viewG1 = View()
 viewG1.add_item(buttonG1_1)
@@ -33,6 +33,7 @@ viewT3.add_item(buttonT3_1)
 viewT3.add_item(buttonT3_2)
 buttonT4_1 = Button(label="Oui",style=discord.ButtonStyle.primary)# Oui => Suborbital ?
 buttonT4_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Suborbital  ?
+Update
 viewT4= View()
 viewT4.add_item(buttonT4_1)
 viewT4.add_item(buttonT4_2)
@@ -59,3 +60,8 @@ buttonE4_2 = Button(label="Non",style=discord.ButtonStyle.danger)# Non => Satell
 viewE4 = View()
 viewE4.add_item(buttonE4_1)
 viewE4.add_item(buttonE4_2)
+testestest
+464sqdf4a
+a dsq
+adsqe
+7559874aedf
